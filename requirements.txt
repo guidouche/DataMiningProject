@@ -2,3 +2,7 @@
 tensorflow
 keras
 matplotlib
+tkinter
+PIL
+numpy
+ghostscript
