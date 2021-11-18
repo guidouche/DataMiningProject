@@ -8,30 +8,29 @@ import Recovering
 
 frame_width = 1000
 frame_height = 1000
-canvas_width = 350
-canvas_height = 350
+canvas_width = 100
+canvas_height = 100
 
 
 class CreateWindow:
 
     def paint(self, event):
-        x1, y1 = (event.x - 5), (event.y - 5)
-        x2, y2 = (event.x + 5), (event.y + 5)
-        self.w.create_oval(x1, y1, x2, y2, fill="#fff", width="1", outline="#fff")
+        x1, y1 = (event.x - 3), (event.y - 3)
+        x2, y2 = (event.x + 3), (event.y + 3)
+        self.w.create_rectangle(x1, y1, x2, y2, fill="#fff", width="1", outline="#fff")
 
     def lunchReconize(self):
         ps = self.w.postscript(colormode='color')
         img = Image.open(io.BytesIO(ps.encode('utf-8')))
-        #img = ImageOps.invert(img)
-        img.save('img.jpeg')
+        img_rsize=img.resize((28,28))
+        img_rsize.save('img.jpeg')
 
         predict = Recovering.reconize()
         formatter = "{0:.2f}"
         prediction = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
-        if (float(prediction[2]) < 70):
-            self.label["text"] = "Inconnue"
-        else:
-            self.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
+        print(prediction)
+
+        self.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
 
     def resetdraw(self):
         self.w.delete("all")
@@ -49,7 +48,7 @@ class CreateWindow:
 
         self.w = Canvas(self.f,
                         width=canvas_width, height=canvas_height, bg="#000000")
-        self.w.create_rectangle(0,0,500,500,fill="#000000", width="1", outline="#000000")
+        self.w.create_rectangle(0,0,canvas_width,canvas_height,fill="#000000", width="1", outline="#000000")
         self.w.pack(expand=NO)
         self.w.bind("<B1-Motion>", self.paint)
 

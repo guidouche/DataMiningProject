@@ -3,7 +3,6 @@
 from keras import backend as K
 from keras.preprocessing.image import load_img,img_to_array
 from keras.models import load_model
-import numpy as np
 
 # Pour utiliser tensorflow
 K.set_image_data_format('channels_last')
