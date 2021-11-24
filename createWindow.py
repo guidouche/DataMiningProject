@@ -12,9 +12,10 @@ import Recovering
 
 frame_width = 1000
 frame_height = 1000
-canvas_width = 100
-canvas_height = 100
+canvas_width = 200
+canvas_height = 200
 number_points = 0
+threadActive = False
 
 
 class CreateWindow:
@@ -22,32 +23,46 @@ class CreateWindow:
     def paint(self, event):
         x1, y1 = (event.x - 3), (event.y - 3)
         x2, y2 = (event.x + 3), (event.y + 3)
-        self.w.create_rectangle(x1, y1, x2, y2, fill="#fff", width="1", outline="#fff")
+        self.w.create_rectangle(x1, y1, x2, y2, fill="#000000", width="1", outline="#000000")
 
         global number_points
         number_points += 1
 
         if number_points % 10 == 0:
-            m = DiscoverThread("", self)
-            m.start()
+            global threadActive
+            if not threadActive:
+                m = DiscoverThread("", self)
+                m.start()
+                threadActive = True
 
 
     def lunchReconize(self):
         ps = self.w.postscript(colormode='color')
         img = Image.open(io.BytesIO(ps.encode('utf-8')))
-        img_rsize=img.resize((28,28))
+        img_rsize=img.resize((150,150))
         img_rsize.save('img.jpeg')
 
         predict = Recovering.reconize()
         formatter = "{0:.2f}"
         prediction = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
         print(prediction)
+        res = ""
+        if np.argmax(predict) == 0:
+            res = "Etoile"
+        elif np.argmax(predict) == 1:
+            res = "Lune"
+        elif np.argmax(predict) == 2:
+            res = "Nuage"
+        elif np.argmax(predict) == 3:
+            res = "Parapluie"
+        elif np.argmax(predict) == 4:
+            res = "Soleil"
 
-        self.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
+        self.label["text"] = res, ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
 
     def resetdraw(self):
         self.w.delete("all")
-        self.w.create_rectangle(0, 0, 500, 500, fill="#000000", width="1", outline="#000000")
+        self.w.create_rectangle(0, 0, 500, 500, fill="#FFFFFF", width="1", outline="#000000")
         self.label["text"] = "???"
 
     def __init__(self, master):
@@ -61,8 +76,8 @@ class CreateWindow:
         self.f.pack(expand=YES, fill=BOTH)
 
         self.w = Canvas(self.f,
-                        width=canvas_width, height=canvas_height, bg="#000000")
-        self.w.create_rectangle(0,0,canvas_width,canvas_height,fill="#000000", width="1", outline="#000000")
+                        width=canvas_width, height=canvas_height, bg="#FFFFFF")
+        #self.w.create_rectangle(0,0,canvas_width,canvas_height,fill="#000000", width="1", outline="#000000")
         self.w.pack(expand=NO)
         self.w.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.w.bind("<B1-Motion>", self.paint)
@@ -91,20 +106,27 @@ class DiscoverThread (threading.Thread):
         time.sleep(1)
         i = 0
         while not self._stopevent.isSet():
-            ps = self.param.w.postscript(colormode='color')
-            img = Image.open(io.BytesIO(ps.encode('utf-8')))
-            img_rsize = img.resize((28, 28))
-            img_rsize.save('img.jpeg')
+            m = CreateWindow
+            m.lunchReconize(self.param)
+            # ps = self.param.w.postscript(colormode='color')
+            # img = Image.open(io.BytesIO(ps.encode('utf-8')))
+            # img_rsize = img.resize((28, 28))
+            # img_rsize.save('img.jpeg')
+            #
+            # predict = Recovering.reconize()
+            # formatter = "{0:.2f}"
+            # prediction = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
+            # print(prediction)
+            # self.param.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
 
-            predict = Recovering.reconize()
-            formatter = "{0:.2f}"
-            prediction = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
-            print(prediction)
-            self.param.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
+
+
             self.stop()
 
             self._stopevent.wait(1.0)
         print("le thread s'est termine proprement")
+        global threadActive
+        threadActive = False
 
     def stop(self):
         self._stopevent.set()
