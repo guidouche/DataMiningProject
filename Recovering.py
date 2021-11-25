@@ -19,8 +19,6 @@ def reconize():
 
     prediction = modele.predict(img)
     print(prediction)
-    # y_prob = modele.predict(img)
-    # y_classes = y_prob.argmax(axis=-1)
 
     return prediction
 

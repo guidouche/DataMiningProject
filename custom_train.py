@@ -20,7 +20,7 @@ model1.add(MaxPooling2D(pool_size=(2,2)))
 model1.add(Flatten())
 model1.add(Dense(64,activation='relu'))
 model1.add(Dropout(0.2))
-model1.add(Dense(5,activation='sigmoid'))
+model1.add(Dense(5,activation='softmax'))
 model1.compile(loss='binary_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
@@ -62,7 +62,7 @@ print(label_map)
 
 h = model1.fit(
         train_generator,
-        epochs=15,
+        epochs=20,
         validation_data=validation_generator)
 
 

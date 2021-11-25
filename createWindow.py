@@ -14,7 +14,6 @@ frame_width = 1000
 frame_height = 1000
 canvas_width = 200
 canvas_height = 200
-number_points = 0
 threadActive = False
 
 
@@ -24,16 +23,11 @@ class CreateWindow:
         x1, y1 = (event.x - 3), (event.y - 3)
         x2, y2 = (event.x + 3), (event.y + 3)
         self.w.create_rectangle(x1, y1, x2, y2, fill="#000000", width="1", outline="#000000")
-
-        global number_points
-        number_points += 1
-
-        if number_points % 10 == 0:
-            global threadActive
-            if not threadActive:
-                m = DiscoverThread("", self)
-                m.start()
-                threadActive = True
+        global threadActive
+        if not threadActive:
+            m = DiscoverThread("", self)
+            m.start()
+            threadActive = True
 
 
     def lunchReconize(self):
@@ -108,19 +102,6 @@ class DiscoverThread (threading.Thread):
         while not self._stopevent.isSet():
             m = CreateWindow
             m.lunchReconize(self.param)
-            # ps = self.param.w.postscript(colormode='color')
-            # img = Image.open(io.BytesIO(ps.encode('utf-8')))
-            # img_rsize = img.resize((28, 28))
-            # img_rsize.save('img.jpeg')
-            #
-            # predict = Recovering.reconize()
-            # formatter = "{0:.2f}"
-            # prediction = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
-            # print(prediction)
-            # self.param.label["text"] = np.argmax(predict), ":", formatter.format(predict[0][np.argmax(predict)] * 100), "%"
-
-
-
             self.stop()
 
             self._stopevent.wait(1.0)

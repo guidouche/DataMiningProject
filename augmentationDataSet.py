@@ -1,6 +1,8 @@
 
 from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 
+
+nImages = 30; # Nombre d'images générées
 datagen = ImageDataGenerator(
     featurewise_center=False, samplewise_center=False,
     featurewise_std_normalization=False, samplewise_std_normalization=False,
@@ -15,8 +17,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -35,8 +36,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -56,8 +56,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -77,8 +76,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -98,8 +96,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -119,8 +116,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -140,8 +136,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -161,8 +156,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -182,8 +176,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -203,8 +196,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -224,8 +216,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -245,8 +236,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -266,8 +256,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -287,8 +276,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -308,8 +296,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -329,8 +316,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -350,8 +336,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -371,8 +356,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -392,8 +376,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -413,8 +396,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/train/lune",
@@ -433,8 +415,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/validation/lune",
@@ -453,8 +434,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/validation/lune",
@@ -473,8 +453,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/validation/lune",
@@ -492,8 +471,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/validation/lune",
@@ -511,8 +489,7 @@ x = img_to_array(img)
 x = x.reshape((1,) + x.shape)
 
 # Boucle de génération et d'enregistrement des images supplémentaires
-# Syntaxe un peu byzarre mais c'est comme ça !
-nImages = 30; # Nombre d'images générées
+
 i = 0
 for batch in datagen.flow(x, batch_size=1,
                           save_to_dir="./data/validation/lune",
