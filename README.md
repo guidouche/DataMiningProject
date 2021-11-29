@@ -12,8 +12,8 @@
     -numpy
     -ghostscript
     
-    to launch our application you need to run the Main script. 
-    Once this is done a window will appear and you will be able to draw.
+   to launch our application you need to run the Main script. 
+   Once this is done a window will appear and you will be able to draw.
     
-    If you want to train the network you have to run the Train script. You can change the number of epochs at the beginning of the script. 
-    Beware that using a training on another computer may cause some problems.
+   If you want to train the network you have to run the Train script. You can change the number of epochs at the beginning of the script. 
+   Beware that using a training on another computer may cause some problems.
