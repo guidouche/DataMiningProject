@@ -24,12 +24,13 @@ def duplication(src, folder):
         if i >= nbDoublons:
             break
 
+
 monRepertoire = "./data/Source/"
 
 fichiers = [f for f in listdir(monRepertoire)]
 
 print(fichiers)
-#Nombre de photos généreés pour chaque fichier source
+# Nombre de photos généreés pour chaque fichier source
 nbDoublons = 30
 
 datagen = ImageDataGenerator(
@@ -39,22 +40,20 @@ datagen = ImageDataGenerator(
     height_shift_range=0.1, brightness_range=None, shear_range=0.0, zoom_range=0.3,
     channel_shift_range=0.0, fill_mode='nearest')
 
-
-
 for f in fichiers:
     photos = [p for p in listdir(join(monRepertoire, f))]
     nbPhotos = photos.__len__()
-    #On fait du 60% train 40% valdiation :
+    # On fait du 60% train 40% valdiation :
     nbtrain = round(60 * nbPhotos / 100)
     nbValidation = nbPhotos - nbtrain
     random.shuffle(photos)
     _save_to_dir = "./data/" + "train" + "/" + f
     EraseFile(_save_to_dir)
     for x in range(nbtrain):
-        duplication(join(monRepertoire, f, photos[x]),_save_to_dir)
+        duplication(join(monRepertoire, f, photos[x]), _save_to_dir)
     print("Duplication du répertoire " + f + " vers train effectuée.")
     _save_to_dir = "./data/" + "validation" + "/" + f
     EraseFile(_save_to_dir)
-    for x in range(nbtrain, nbtrain+nbValidation):
+    for x in range(nbtrain, nbtrain + nbValidation):
         duplication(join(monRepertoire, f, photos[x]), _save_to_dir)
     print("Duplication du répertoire " + f + " vers validation effectuée.")

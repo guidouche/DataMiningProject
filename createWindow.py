@@ -1,14 +1,10 @@
 from tkinter import *
 import threading
 import time
-
 import numpy as np
-from PIL import Image, ImageOps
+from PIL import Image
 import io
-
 import Recovering
-
-
 
 frame_width = 1000
 frame_height = 1000
@@ -29,11 +25,10 @@ class CreateWindow:
             m.start()
             threadActive = True
 
-
     def lunchReconize(self):
         ps = self.w.postscript(colormode='color')
         img = Image.open(io.BytesIO(ps.encode('utf-8')))
-        img_rsize=img.resize((150,150))
+        img_rsize = img.resize((150, 150))
         img_rsize.save('img.jpeg')
 
         predict = Recovering.reconize()
@@ -64,14 +59,12 @@ class CreateWindow:
 
         self.f = Frame(master,
                        width=frame_width,
-                       height=frame_height,
-                       bg='#FF5733'
+                       height=frame_height
                        )
         self.f.pack(expand=YES, fill=BOTH)
 
         self.w = Canvas(self.f,
                         width=canvas_width, height=canvas_height, bg="#FFFFFF")
-        #self.w.create_rectangle(0,0,canvas_width,canvas_height,fill="#000000", width="1", outline="#000000")
         self.w.pack(expand=NO)
         self.w.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.w.bind("<B1-Motion>", self.paint)
@@ -85,12 +78,11 @@ class CreateWindow:
         self.label = Label(self.f, text="???")
         self.label.pack(side=BOTTOM)
 
-
         mainloop()
 
 
-class DiscoverThread (threading.Thread):
-    def __init__(self, nom = '', param = ''):
+class DiscoverThread(threading.Thread):
+    def __init__(self, nom='', param=''):
         threading.Thread.__init__(self)
         self.nom = nom
         self.param = param
@@ -98,7 +90,6 @@ class DiscoverThread (threading.Thread):
 
     def run(self):
         time.sleep(1)
-        i = 0
         while not self._stopevent.isSet():
             m = CreateWindow
             m.lunchReconize(self.param)
